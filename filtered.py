@@ -2,6 +2,7 @@ import requests
 import os
 import json
 
+#https://www.mdpi.com/2076-3417/11/9/4105/htm
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = ''
