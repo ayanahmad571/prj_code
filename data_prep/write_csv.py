@@ -3,18 +3,26 @@ from doctest import master
 from data_fetch import master_data
 from data_fetch_twi_bot import master_data_twi
 
-header = ['HAS_BACK_IMAGE', 
-'IS_VERIFIED', 
-'HAS_PHOTO',
-'FOLLOW_COUNT',
-'LIST_COUNT', 
-'DESC_WORDS', 
-'FRIENDS', 
-'AGE_ACCOUNT', 
-'HAS_LOCATION', 
-'IS_GEO', 
-'LEN_SCREEN_NAME', 
-'FAVORITES', 
+header = [
+'statuses_count'                ,
+'followers_count'               ,
+'friends_count'                 ,
+'favourite_count'               ,
+'listed_count'                  ,
+'default_profile_binary'        ,
+'profile_use_background_image'  ,
+'verified'                      ,
+'tweet_freq'                    ,
+'followers_growth_rate'         ,
+'friends_growth_rate'           ,
+'favourites_growth_rate'        ,
+'listed_growth_rate'            ,
+'followers_friends_ratio'       ,
+'screen_name_length'            , 
+'num_digits_in_screen_name'     ,
+'name_length'                   ,
+'num_digits_in_name'            ,
+'description_length'            ,
 'IS_BOT']
 
 data = master_data + master_data_twi

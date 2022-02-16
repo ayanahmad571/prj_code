@@ -70,11 +70,11 @@ for path in paths:
 
 
             #User Meta Data - Counts
-            statuses_count                = user_obj['statuses_count']
-            followers_count               = user_obj['followers_count']
-            friends_count                 = user_obj['friends_count']
-            favourite_count               = user_obj['favourites_count']
-            listed_count                  = user_obj['listed_count']
+            statuses_count                = int(user_obj['statuses_count'])
+            followers_count               = int(user_obj['followers_count'])
+            friends_count                 = int(user_obj['friends_count'])
+            favourite_count               = int(user_obj['favourites_count'])
+            listed_count                  = int(user_obj['listed_count'])
 
             #User Meta Data - Binary Values
             if user_obj['default_profile']:
