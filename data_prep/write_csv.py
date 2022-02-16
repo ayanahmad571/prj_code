@@ -1,7 +1,7 @@
 import csv
 from doctest import master
 from data_fetch import master_data
-
+from data_fetch_twi_bot import master_data_twi
 
 header = ['HAS_BACK_IMAGE', 
 'IS_VERIFIED', 
@@ -17,7 +17,9 @@ header = ['HAS_BACK_IMAGE',
 'FAVORITES', 
 'IS_BOT']
 
-data = master_data
+# data = master_data + master_data_twi
+data = master_data_twi
+
 
 with open('data_saved.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
