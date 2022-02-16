@@ -30,99 +30,136 @@ for path in paths:
         data = json.load(f)
         master_data = []
         for row in data:
-            UID = 1
-            HAS_BACK_IMAGE = 0
-            IS_VERIFIED = 0
-            HAS_PHOTO = 0
-            FOLLOW_COUNT = 0
-            LIST_COUNT = 0
-            DESC_WORDS = 0
-            FRIENDS = 0
-            HAS_LOCATION = 0
-            IS_GEO = 0
-            LEN_SCREEN_NAME = 0
-            FAVORITES = 0
-            AGE_ACCOUNT = 1 
-            
+            UID = row['user']['id']
+            #### New Features - user metadata
+            statuses_count                = 0
+            followers_count               = 0
+            friends_count                 = 0
+            favourite_count               = 0
+            listed_count                  = 0
+            default_profile_binary        = 0
+            profile_use_background_image  = 0
+            verified                      = 0
+
+            #### New Features - derived features
+
+            tweet_freq                    = 0
+            followers_growth_rate         = 0
+            friends_growth_rate           = 0
+            favourites_growth_rate        = 0
+            listed_growth_rate            = 0
+            followers_friends_ratio       = 0
+            screen_name_length            = 0 
+            num_digits_in_screen_name     = 0
+            name_length                   = 0
+            num_digits_in_name            = 0
+            description_length            = 0
+            # screen_name_likelihood        = 0
+
             
             user_obj = row['user']
 
-            #uid
-            UID = user_obj['id']
-            
-            #back image?
-            if user_obj['profile_background_image_url_https'] != None:
-                HAS_BACK_IMAGE = 1
-            
-            #verified
-            if user_obj['verified']:
-                IS_VERIFIED = 1
-
-            #profile photo ?
-            if user_obj['profile_image_url_https'] != None:
-                HAS_PHOTO = 1
-
-            #followers_count
-            FOLLOW_COUNT = user_obj['followers_count']
-
-            #listed_count
-            LIST_COUNT = user_obj['listed_count']
-
-            #description
-            desc = user_obj['description']
-            if len(desc) > 1:
-                word_list = user_obj['description'].split()
-                DESC_WORDS = len(word_list)
-                
-            #friends_count
-            FRIENDS = user_obj['friends_count']
-
-            #location?
-            if len(user_obj['location']) > 1:
-                HAS_LOCATION = 1
-
-            #geo_enabled
-            if user_obj['geo_enabled']:
-                IS_GEO = 1
-
-            #screen_name
-            scr_name = user_obj['description']
-            if len(scr_name) > 1:
-                word_list = scr_name.split()
-                LEN_SCREEN_NAME = len(word_list)
-
-            #favourites_count
-            FAVORITES = user_obj['favourites_count']
-
-
-            #acount age
-            dtime_raw = row['user']['created_at']
+            #account age
+            dtime_raw = user_obj['created_at']
             created_at = datetime.strptime(dtime_raw,'%a %b %d %H:%M:%S +0000 %Y')
             diff = datetime.now() - created_at
             duration_in_s = diff.total_seconds() 
             AGE_ACCOUNT = divmod(duration_in_s, 86400)[0]
 
+
+
+
+            #User Meta Data - Counts
+            statuses_count                = user_obj['statuses_count']
+            followers_count               = user_obj['followers_count']
+            friends_count                 = user_obj['friends_count']
+            favourite_count               = user_obj['favourites_count']
+            listed_count                  = user_obj['listed_count']
+
+            #User Meta Data - Binary Values
+            if user_obj['default_profile']:
+                default_profile_binary = 1
+
+            if user_obj['profile_use_background_image']:
+                profile_use_background_image = 1
+            
+            if user_obj['verified']:
+                verified = 1
+
+            
+
+            #Derived features
+
+            tweet_freq                    = int(user_obj['statuses_count'])/AGE_ACCOUNT
+            followers_growth_rate         = int(user_obj['followers_count'])/AGE_ACCOUNT
+            friends_growth_rate           = int(user_obj['friends_count'])/AGE_ACCOUNT
+            favourites_growth_rate        = int(user_obj['favourites_count'])/AGE_ACCOUNT
+            listed_growth_rate            = int(user_obj['listed_count'])/AGE_ACCOUNT
+
+            followers_friends_ratio = 0
+            if int(user_obj['friends_count']) > 0:
+                followers_friends_ratio       = int(user_obj['followers_count'])/int(user_obj['friends_count'])
+            
+
+            #description
+            DESC_WORDS = 0
+            desc = user_obj['description']
+            if len(desc) > 1:
+                word_list = user_obj['description'].split()
+                DESC_WORDS = len(word_list)
+
+            #screen_name
+            LEN_SCREEN_NAME = 0
+            scr_name = user_obj['screen_name']
+            SCREEN_NAME_DIGS = sum(c.isdigit() for c in scr_name)
+            if len(scr_name) > 1:
+                word_list = scr_name.split()
+                LEN_SCREEN_NAME = len(word_list)
+
+            #name
+            LEN_NAME = 0
+            name = user_obj['name']
+            NAME_DIGS = sum(c.isdigit() for c in name)
+            if len(name) > 1:
+                word_list = name.split()
+                LEN_NAME = len(word_list)
+            
+
+            screen_name_length            = LEN_SCREEN_NAME 
+            num_digits_in_screen_name     = SCREEN_NAME_DIGS
+            name_length                   = LEN_NAME
+            num_digits_in_name            = NAME_DIGS
+            description_length            = DESC_WORDS
+            # screen_name_likelihood        = 
+
             #IS A BOT?
             if UID in sql_insert:
                 IS_BOT = sql_insert[UID]
                 to_append = [
-                    # UID, 
-                    HAS_BACK_IMAGE, 
-                    IS_VERIFIED, 
-                    HAS_PHOTO,
-                    FOLLOW_COUNT,
-                    LIST_COUNT, 
-                    DESC_WORDS, 
-                    FRIENDS, 
-                    AGE_ACCOUNT, 
-                    HAS_LOCATION, 
-                    IS_GEO, 
-                    LEN_SCREEN_NAME, 
-                    FAVORITES, 
+                    statuses_count                ,
+                    followers_count               ,
+                    friends_count                 ,
+                    favourite_count               ,
+                    listed_count                  ,
+                    default_profile_binary        ,
+                    profile_use_background_image  ,
+                    verified                      ,
+                    tweet_freq                    ,
+                    followers_growth_rate         ,
+                    friends_growth_rate           ,
+                    favourites_growth_rate        ,
+                    listed_growth_rate            ,
+                    followers_friends_ratio       ,
+                    screen_name_length            , 
+                    num_digits_in_screen_name     ,
+                    name_length                   ,
+                    num_digits_in_name            ,
+                    description_length            ,
                     IS_BOT
                 ]
                 # print(to_append)
                 master_data.append(to_append)
+                    
 
 
 

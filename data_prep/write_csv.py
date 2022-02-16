@@ -17,8 +17,8 @@ header = ['HAS_BACK_IMAGE',
 'FAVORITES', 
 'IS_BOT']
 
-# data = master_data + master_data_twi
-data = master_data_twi
+data = master_data + master_data_twi
+# data = master_data_twi
 
 
 with open('data_saved.csv', 'w', encoding='UTF8', newline='') as f:
