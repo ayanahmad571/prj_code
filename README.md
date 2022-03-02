@@ -44,3 +44,8 @@ There are various features that we wont be able to use since we are unable to fe
 - num_digits_in_name            count
 - description_length            count
 - screen_name_likelihood        real-valued
+
+#### File Structure
+
+- data_fetch, data_fet_twi_bot, data_fetch_cresci will  collect data from respective data sets in the defined directory and will extract features from them
+- as
