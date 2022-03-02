@@ -3,7 +3,7 @@ from datetime import datetime
 # from this import d
 from labels_fetch import sql_insert
 
-p = "../../datasets/"
+p = "../../../datasets/"
 
 paths = [
     "botometer-feedback-2019/botometer-feedback-2019_tweets.json",

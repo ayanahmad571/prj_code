@@ -2,7 +2,7 @@
 import csv
 from db_connect import myscursor, mydb
 
-p = "../../datasets/"
+p = "../../../datasets/"
 
 paths = [
     "botometer-feedback-2019/botometer-feedback-2019.tsv",

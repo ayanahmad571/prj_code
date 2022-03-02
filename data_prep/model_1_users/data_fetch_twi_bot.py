@@ -3,7 +3,7 @@ from datetime import datetime
 # from this import d
 # from labels_fetch import sql_insert
 
-p = "../../datasets/"
+p = "../../../datasets/"
 
 paths = [
     "Twibot-20/train.json",
