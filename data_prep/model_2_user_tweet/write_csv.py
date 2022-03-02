@@ -1,8 +1,5 @@
 import csv
-from doctest import master
-from data_fetch import master_data
-from data_fetch_twi_bot import master_data_twi
-from data_fetch_cresci import master_data_cresci
+from twi_bot.feature_extraction import master_data_twi
 
 
 header = [
@@ -25,13 +22,17 @@ header = [
 'name_length'                   ,
 'num_digits_in_name'            ,
 'description_length'            ,
+'hashtags_per_post'             ,
+'urls_per_post'                 ,
+'mentions_per_post'             ,
+'words_per_post'                ,
 'IS_BOT']
 
-data = master_data + master_data_twi + master_data_cresci
+data = master_data_twi
 # data = master_data_twi
 
 
-with open('labelled_data.csv', 'w', encoding='UTF8', newline='') as f:
+with open('labelled_data_tweets.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
 
     # write the header
