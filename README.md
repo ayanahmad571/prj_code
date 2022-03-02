@@ -47,5 +47,16 @@ There are various features that we wont be able to use since we are unable to fe
 
 #### File Structure
 
-- data_fetch, data_fet_twi_bot, data_fetch_cresci will  collect data from respective data sets in the defined directory and will extract features from them
-- as
+model_1_users
+- labels_fetch goes through all user data only files and fetches their bot and no bot labels
+- data_fetch, data_fet_twi_bot, data_fetch_cresci will  collect data from respective data sets in the defined directory and will extract features from them along with extracting labels
+- write_csv takes all the data from data_fetch..... and formats it in a feature - val grid and outputs labelled feature extracted data ready to use for training and testing (User Data Only)
+
+model_2_user_tweet
+- labels_fetch goes through all user data only files and fetches their bot and no bot labels
+- data_fet_twi_bot, data_fetch_cresci will  collect data from respective data sets in the defined directory and will extract features from them along with extracting labels and tweet data extraction
+- write_csv takes all the data from data_fetch..... and formats it in a feature - val grid and outputs labelled feature extracted data ready to use for training and testing (User Data and Tweet Data)
+
+presidential_data
+- presidential_data_crawler - fetches tweet IDs data from github with a random frequency
+- presidential_data_combiner - groups tweet files based on certain params and removes some files to reduce total tweet count 
