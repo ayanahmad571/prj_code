@@ -15,3 +15,15 @@ IS_VERIFIED
 HAS_PHOTO
 HAS_LOCATION
 IS_GEO
+
+
+HASHTAGS_PER_POST
+URLS_PER_POST
+MENTIONS_PER_POST
+WORDS_PER_POST
+
+hashtags_per_post
+urls_per_post
+mentions_per_post
+words_per_post
+
