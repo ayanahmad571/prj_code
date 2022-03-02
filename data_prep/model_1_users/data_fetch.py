@@ -14,11 +14,14 @@ paths = [
     "celebrity-2019(1)/celebrity-2019_tweets.json", 
     "botwiki-2019/botwiki-2019_tweets.json", 
     "cresci-rtbust-2019(1)/cresci-rtbust-2019_tweets.json", 
-    "gilani-2017/gilani-2017_tweets.json"
+    "gilani-2017/gilani-2017_tweets.json",
+    "midterm-2018(1)/midterm-2018_processed_user_objects.json"
 ]
 
 
+
 print("Acessing User Data:")
+diff_format_filename = "midterm-2018(1)/midterm-2018_processed_user_objects.json"
 # Opening JSON files
 for path in paths:
     print(path)
@@ -30,7 +33,11 @@ for path in paths:
         data = json.load(f)
         master_data = []
         for row in data:
-            UID = row['user']['id']
+            if diff_format_filename == path:
+                UID = row['user_id']
+            else:
+                UID = row['user']['id']
+            
             #### New Features - user metadata
             statuses_count                = 0
             followers_count               = 0
@@ -56,12 +63,22 @@ for path in paths:
             description_length            = 0
             # screen_name_likelihood        = 0
 
+            if diff_format_filename == path:
+                user_obj = row
+            else:
+                user_obj = row['user']
             
-            user_obj = row['user']
-
+            
+        
             #account age
-            dtime_raw = user_obj['created_at']
-            created_at = datetime.strptime(dtime_raw,'%a %b %d %H:%M:%S +0000 %Y')
+            if diff_format_filename == path:
+                dtime_raw = user_obj['user_created_at']
+                created_at = datetime.strptime(dtime_raw,'%a %b %d %H:%M:%S %Y')
+            else:
+                dtime_raw = user_obj['created_at']
+                created_at = datetime.strptime(dtime_raw,'%a %b %d %H:%M:%S +0000 %Y')
+            
+            
             diff = datetime.now() - created_at
             duration_in_s = diff.total_seconds() 
             AGE_ACCOUNT = divmod(duration_in_s, 86400)[0]
@@ -104,7 +121,7 @@ for path in paths:
             #description
             DESC_WORDS = 0
             desc = user_obj['description']
-            if len(desc) > 1:
+            if desc and len(desc) > 1 :
                 word_list = user_obj['description'].split()
                 DESC_WORDS = len(word_list)
 
