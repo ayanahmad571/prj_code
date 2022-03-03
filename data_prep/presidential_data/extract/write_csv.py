@@ -38,7 +38,7 @@ def write_to_file(file_name, data):
         writer.writerows(data)
 
 def write_to_file2(file_name, data):
-    print(f"Writing {file_name} to file")
+    print(f"Writing {file_name} to file - Partial")
     header = [
     'statuses_count'                ,
     'followers_count'               ,

@@ -1,15 +1,18 @@
 
 import pandas as pd
-import csv
+import numpy as np
 from model2 import model
+
 # from this import d
 # from labels_fetch import sql_insert
 
-path = "../data_prep/presidential_data/extract/presidential_data.csv"
+path = "../data_prep/presidential_data/extract/2020-09.csv"
 # path = "test_data.csv"
 
-df = pd.read_csv(path)
-y_predicted = model.predict(df)
+df_president = pd.read_csv(path)
+y_pres = model.predict(df_president)
 
-print(y_predicted)
-
+y_pres = np.asarray(y_pres)
+(unique, counts) = np.unique(y_pres, return_counts=True)
+frequencies = np.asarray((unique, counts)).T
+print(frequencies)
