@@ -1,6 +1,6 @@
 import csv
 from twi_bot.feature_extraction import master_data_twi
-
+from cresci.feature_extraction import master_data_cresci
 
 header = [
 'statuses_count'                ,
@@ -28,7 +28,7 @@ header = [
 'words_per_post'                ,
 'IS_BOT']
 
-data = master_data_twi
+data = master_data_twi + master_data_cresci
 # data = master_data_twi
 
 
