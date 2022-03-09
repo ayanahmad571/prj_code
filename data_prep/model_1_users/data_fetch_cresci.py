@@ -11,12 +11,12 @@ p = "../../../datasets/cresci-2017.csv/datasets_full.csv/"
 paths = [
     ("genuine_accounts.csv",0),
     ("social_spambots_3.csv",1),
-    ("traditional_spambots_3.csv",1),
+    # ("traditional_spambots_3.csv",1), Has a lot of Null Values
     ("social_spambots_1.csv",1),
     # ("traditional_spambots_1.csv",1), Has a lot of Null Values
     # ("traditional_spambots_4.csv",1), Has a lot of Null Values
     ("fake_followers.csv",1),
-    ("social_spambots_2.csv",1),
+    # ("social_spambots_2.csv",1), Has a lot of Null Values
     # ("traditional_spambots_2.csv",1) Has a lot of Null Values
 ]
 

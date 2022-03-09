@@ -8,10 +8,10 @@ p = "../../../datasets/cresci-2017.csv/datasets_full.csv/"
 paths = [
     ("genuine_accounts.csv",0),
     ("social_spambots_3.csv",1),
-    ("social_spambots_1.csv",1),
+    # ("social_spambots_1.csv",1), # Too Many Null Values
     # ("traditional_spambots_1.csv",1), # Too Many Null Values
     ("fake_followers.csv",1),
-    ("social_spambots_2.csv",1)
+    # ("social_spambots_2.csv",1) # Too Many Null Values
 ]
 
 # #### Tweet Features
