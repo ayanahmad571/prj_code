@@ -1,13 +1,17 @@
 
 import pandas as pd
 import numpy as np
-from model2 import model
 
-# from this import d
-# from labels_fetch import sql_insert
 
-path = "../data_prep/presidential_data/extract/2020-09.csv"
-# path = "test_data.csv"
+# Model 1
+from model1 import model
+path = "../data_prep/presidential_data/extract/partial_2020-09.csv"
+
+# Model 2
+# from model2 import model
+# path = "../data_prep/presidential_data/extract/2020-09.csv"
+
+
 
 df_president = pd.read_csv(path)
 y_pres = model.predict(df_president)
