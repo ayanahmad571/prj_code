@@ -15,7 +15,7 @@ paths = [
     "botwiki-2019/botwiki-2019_tweets.json", 
     "cresci-rtbust-2019(1)/cresci-rtbust-2019_tweets.json", 
     "gilani-2017/gilani-2017_tweets.json",
-    "midterm-2018(1)/midterm-2018_processed_user_objects.json"
+    # "midterm-2018(1)/midterm-2018_processed_user_objects.json"
 ]
 
 

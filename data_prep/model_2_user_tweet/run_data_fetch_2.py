@@ -28,7 +28,9 @@ header = [
 'words_per_post'                ,
 'IS_BOT']
 
-data = master_data_twi + master_data_cresci
+# data = master_data_twi + master_data_cresci
+data = master_data_twi
+
 # data = master_data_twi
 
 

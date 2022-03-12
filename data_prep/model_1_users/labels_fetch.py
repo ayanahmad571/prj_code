@@ -1,6 +1,5 @@
 # This script fetches all labelled bot information and adds it to our database.
 import csv
-from db_connect import myscursor, mydb
 
 p = "../../../datasets/"
 
@@ -34,26 +33,4 @@ for path in paths:
             sql_insert.update(mapVal)
     print("Done")
 
-
-# print(len(sql_insert))
-# print(sql_insert[849816664036315138])
-
-# SQL INSERT ONLY
-# for path in paths:
-#     with open(p+path) as file:
-#         tsv_file = csv.reader(file, delimiter="\t")
-#         for line in tsv_file:
-#             is_bot = 0
-#             if(line[1] == "bot"):
-#                 is_bot = 1
-#             mapVal = (line[0], is_bot)
-#             # print(mapVal)
-#             sql_insert.append(mapVal)
-
-# print(len(sql_insert))
-
-# sql = "INSERT INTO account_status (acc_uid, is_bot) VALUES (%s, %s)"
-# myscursor.executemany(sql, sql_insert)
-
-# mydb.commit()
 
