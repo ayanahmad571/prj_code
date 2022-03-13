@@ -4,7 +4,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import numpy as np
 from train_test_split import get_train_test_split,models_to_run
 from sklearn.ensemble import RandomForestClassifier
-import k_model_optimise
+# import k_model_optimise
 path_to_optimised_params = "."
 
 

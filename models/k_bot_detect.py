@@ -11,8 +11,12 @@ for variant in models_to_run:
 
     model = models_trained[variant[0]]
 
-    list_names = ["partial_2020-09", "partial_2020-10", "partial_2020-11", "partial_2020-12", "partial_2021-01", "partial_2021-02", "partial_2021-03"
+    list_names_partial = ["partial_2020-09", "partial_2020-10", "partial_2020-11", "partial_2020-12", "partial_2021-01", "partial_2021-02", "partial_2021-03"
     ]
+    list_names_full = ["2020-09", "2020-10", "2020-11", "2020-12", "2021-01", "2021-02", "2021-03"
+    ]
+
+    list_names = list_names_full if (variant[2] == 2) else list_names_partial
     bot_vals = []
     for y in list_names:
         print(" Scanning: ",y)
