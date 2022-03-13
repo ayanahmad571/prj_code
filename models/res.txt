@@ -1,0 +1,141 @@
+D:\KINGS CS\YEAR 3\PRJ\code\models>py k_bot_detect.py
+###########################################
+Running Optimised Model:  Model-1 No-Mid-Cresci
+Accuracy Test: 0.800453514739229
+Accuracy Val: 0.7636363636363637
+Accuracy Train: 0.8928293063133281
+[[192  34]
+ [ 54 161]]
+              precision    recall  f1-score   support
+
+           0       0.78      0.85      0.81       226
+           1       0.83      0.75      0.79       215
+
+    accuracy                           0.80       441
+   macro avg       0.80      0.80      0.80       441
+weighted avg       0.80      0.80      0.80       441
+
+###########################################
+Running Optimised Model:  Model-1 All
+Accuracy Test: 0.9797250381891404
+Accuracy Val: 0.9764814814814815
+Accuracy Train: 1.0
+[[1380   73]
+ [  73 5675]]
+              precision    recall  f1-score   support
+
+           0       0.95      0.95      0.95      1453
+           1       0.99      0.99      0.99      5748
+
+    accuracy                           0.98      7201
+   macro avg       0.97      0.97      0.97      7201
+weighted avg       0.98      0.98      0.98      7201
+
+###########################################
+Running Optimised Model:  Model-2 No-Mid-Cresci
+Accuracy Test: 0.7872340425531915
+Accuracy Val: 0.7298578199052133
+Accuracy Train: 0.9123020706455542
+[[51 21]
+ [ 9 60]]
+              precision    recall  f1-score   support
+
+           0       0.85      0.71      0.77        72
+           1       0.74      0.87      0.80        69
+
+    accuracy                           0.79       141
+   macro avg       0.80      0.79      0.79       141
+weighted avg       0.80      0.79      0.79       141
+
+###########################################
+Running Optimised Model:  Model-2 All
+Accuracy Test: 0.9437412095639943
+Accuracy Val: 0.9296435272045028
+Accuracy Train: 0.9804583835946924
+[[174  17]
+ [ 23 497]]
+              precision    recall  f1-score   support
+
+           0       0.88      0.91      0.90       191
+           1       0.97      0.96      0.96       520
+
+    accuracy                           0.94       711
+   macro avg       0.93      0.93      0.93       711
+weighted avg       0.94      0.94      0.94       711
+
+
+==================================================
+Detecting Bots:  Model-1 No-Mid-Cresci
+ Scanning:  partial_2020-09
+ Scanning:  partial_2020-10
+ Scanning:  partial_2020-11
+ Scanning:  partial_2020-12
+ Scanning:  partial_2021-01
+ Scanning:  partial_2021-02
+ Scanning:  partial_2021-03
+[array([[     0,  46406],
+       [     1, 388977]], dtype=int64), array([[     0,  52862],
+       [     1, 471757]], dtype=int64), array([[     0,  93332],
+       [     1, 687444]], dtype=int64), array([[     0,  86944],
+       [     1, 580071]], dtype=int64), array([[     0, 115388],
+       [     1, 975177]], dtype=int64), array([[     0,  59004],
+       [     1, 525187]], dtype=int64), array([[     0,  50452],
+       [     1, 444684]], dtype=int64)]
+Bot Percentage: 88.98159222401716
+
+==================================================
+Detecting Bots:  Model-1 All
+ Scanning:  partial_2020-09
+ Scanning:  partial_2020-10
+ Scanning:  partial_2020-11
+ Scanning:  partial_2020-12
+ Scanning:  partial_2021-01
+ Scanning:  partial_2021-02
+ Scanning:  partial_2021-03
+[array([[     0,   6943],
+       [     1, 428440]], dtype=int64), array([[     0,   9033],
+       [     1, 515586]], dtype=int64), array([[     0,  11819],
+       [     1, 768957]], dtype=int64), array([[     0,  11704],
+       [     1, 655311]], dtype=int64), array([[      0,   20617],
+       [      1, 1069948]], dtype=int64), array([[     0,  11694],
+       [     1, 572497]], dtype=int64), array([[     0,  10017],
+       [     1, 485119]], dtype=int64)]
+Bot Percentage: 98.21248076265623
+
+==================================================
+Detecting Bots:  Model-2 No-Mid-Cresci
+ Scanning:  2020-09
+ Scanning:  2020-10
+ Scanning:  2020-11
+ Scanning:  2020-12
+ Scanning:  2021-01
+ Scanning:  2021-02
+ Scanning:  2021-03
+[array([[     0,  70585],
+       [     1, 364798]], dtype=int64), array([[     0,  86282],
+       [     1, 438337]], dtype=int64), array([[     0, 158808],
+       [     1, 621968]], dtype=int64), array([[     0, 110030],
+       [     1, 556985]], dtype=int64), array([[     0, 170231],
+       [     1, 920334]], dtype=int64), array([[     0,  86763],
+       [     1, 497428]], dtype=int64), array([[     0,  73665],
+       [     1, 421471]], dtype=int64)]
+Bot Percentage: 83.4771505684642
+
+==================================================
+Detecting Bots:  Model-2 All
+ Scanning:  2020-09
+ Scanning:  2020-10
+ Scanning:  2020-11
+ Scanning:  2020-12
+ Scanning:  2021-01
+ Scanning:  2021-02
+ Scanning:  2021-03
+[array([[     0, 127180],
+       [     1, 308203]], dtype=int64), array([[     0, 151094],
+       [     1, 373525]], dtype=int64), array([[     0, 279021],
+       [     1, 501755]], dtype=int64), array([[     0, 211710],
+       [     1, 455305]], dtype=int64), array([[     0, 299429],
+       [     1, 791136]], dtype=int64), array([[     0, 147848],
+       [     1, 436343]], dtype=int64), array([[     0, 129988],
+       [     1, 365148]], dtype=int64)]
+Bot Percentage: 70.59059328022789
