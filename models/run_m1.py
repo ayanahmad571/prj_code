@@ -1,12 +1,10 @@
 import pandas as pd
-
 from sklearn.model_selection import train_test_split
 #Import scikit-learn metrics module for accuracy calculation
 from sklearn import metrics
 from sklearn.metrics import classification_report,confusion_matrix
 import numpy as np
 from imblearn.over_sampling import SMOTE
-
 
 # Essential Function
 def get_split(holder):
@@ -23,9 +21,9 @@ def get_bot_percentage(y):
 
 def debug_print(X,y):
   print(len(X), len(y), get_bot_percentage(y))
-  
 
-df = pd.read_csv("../data_prep/model_1_users/labelled_data.csv")
+df = pd.read_csv("/content/drive/MyDrive/PRJ/learning_data/labelled_data.csv")
+
 X_raw_data = df[['statuses_count'                ,
 'followers_count'               ,
 'friends_count'                 ,
@@ -59,6 +57,7 @@ debug_print(X_val, y_val)
 debug_print(X_test, y_test)
 debug_print(X_train_res, y_train_res)
 
+
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier(n_estimators=1400, min_samples_split= 5, min_samples_leaf=1, max_features= 'sqrt', max_depth= 80, bootstrap= False)
 model.fit(X_train, y_train)
@@ -78,5 +77,50 @@ print("Accuracy Train:",metrics.accuracy_score(y_train, y_predicted_train))
 # print(confusion_matrix(y_test,y_predicted))
 # print(classification_report(y_test,y_predicted))
 
+from sklearn.model_selection import RandomizedSearchCV# Number of trees in random forest
+n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+
+# Number of features to consider at every split
+max_features = ['auto', 'sqrt']
+# Maximum number of levels in tree
+max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]
+max_depth.append(None)
+# Minimum number of samples required to split a node
+min_samples_split = [2, 5, 10]
+# Minimum number of samples required at each leaf node
+min_samples_leaf = [1, 2, 4]
+# Method of selecting samples for training each tree
+bootstrap = [True, False]# Create the random grid
+random_grid = {'n_estimators': n_estimators,
+               'max_features': max_features,
+               'max_depth': max_depth,
+               'min_samples_split': min_samples_split,
+               'min_samples_leaf': min_samples_leaf,
+               'bootstrap': bootstrap}
+print(random_grid)
 
 
+# Use the random grid to search for best hyperparameters
+# First create the base model to tune
+rf = RandomForestClassifier()
+# Random search of parameters, using 3 fold cross validation, 
+# search across 100 different combinations, and use all available cores
+rf_random = RandomizedSearchCV(estimator = rf, param_distributions = random_grid, n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)# Fit the random search model
+rf_random.fit(X_train, y_train)
+print(rf_random.best_params_)
+
+list_names = ["partial_2020-09", "partial_2020-10", "partial_2020-11", "partial_2020-12", "partial_2021-01", "partial_2021-02", "partial_2021-03"]
+bot_vals = []
+for y in list_names:
+  path = f"/content/drive/MyDrive/PRJ/presi_data/{y}.csv"
+
+  df_pres = pd.read_csv(path)
+  y_pres = model.predict(df_pres)
+  y_pres = np.asarray(y_pres)
+  (unique, counts) = np.unique(y_pres, return_counts=True)
+  frequencies = np.asarray((unique, counts)).T
+  bot_vals.append(frequencies)
+  print(frequencies)
+  
+result_split = get_split(bot_vals)
+print("Bot Percentage:", ((result_split[1]*100)/(result_split[0] + result_split[1])))
