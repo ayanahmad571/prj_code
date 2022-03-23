@@ -13,12 +13,11 @@ bom = botometer.Botometer( wait_on_ratelimit=True,
                           rapidapi_key=rapidapi_key,
                           **twitter_app_auth)
 
-result = bom.check_account('@clayadavis')
 
 result_holder = list()
 
 
-file_segment = 1
+file_segment = 0
 with open(f'../1_data_prep/uid_{file_segment}.txt', 'r') as fd:
     reader = csv.reader(fd)
     for row in reader:
