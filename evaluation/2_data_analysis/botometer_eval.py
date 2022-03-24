@@ -1,6 +1,7 @@
 import csv
 import botometer
 from write_txt import write_txt
+import tweepy
 
 rapidapi_key = "e2f76211acmshe44706172ba098fp120825jsn767145c88be8"
 twitter_app_auth = {
@@ -17,11 +18,16 @@ bom = botometer.Botometer( wait_on_ratelimit=True,
 result_holder = list()
 
 
-file_segment = 0
+file_segment = 1
 with open(f'../1_data_prep/uid_{file_segment}.txt', 'r') as fd:
     reader = csv.reader(fd)
     for row in reader:
-        result = bom.check_account(row[0])
-        result_holder.append(result["cap"]["english"])
+        try:
+            result = bom.check_account(row[0])
+            print(row[0],":",result["cap"]["english"])
+            result_holder.append(result["cap"]["english"])
+        except tweepy.error.TweepError:
+            print(f"Oops! {row[0]} cant be worked")
+        
 
 write_txt(f"results_{file_segment}.txt", result_holder)
