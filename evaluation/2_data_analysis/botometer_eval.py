@@ -18,7 +18,7 @@ bom = botometer.Botometer( wait_on_ratelimit=True,
 result_holder = list()
 
 
-file_segment = 1
+file_segment = 2
 with open(f'../1_data_prep/uid_{file_segment}.txt', 'r') as fd:
     reader = csv.reader(fd)
     for row in reader:
