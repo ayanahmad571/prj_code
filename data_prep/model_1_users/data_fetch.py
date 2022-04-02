@@ -23,6 +23,7 @@ paths = [
 print("Acessing User Data:")
 diff_format_filename = "midterm-2018(1)/midterm-2018_processed_user_objects.json"
 # Opening JSON files
+master_data = []
 for path in paths:
     print(path)
     with open(p+path) as file:
@@ -31,7 +32,6 @@ for path in paths:
         # returns JSON object as
         # a dictionary
         data = json.load(f)
-        master_data = []
         for row in data:
             if diff_format_filename == path:
                 UID = row['user_id']

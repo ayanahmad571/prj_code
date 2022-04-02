@@ -38,6 +38,7 @@ paths = [
 
 
 print("Acessing TwiBot User Data:")
+master_data_twi = []
 # Opening JSON files
 for path in paths:
     print(path)
@@ -47,7 +48,6 @@ for path in paths:
         # returns JSON object as
         # a dictionary
         data = json.load(f)
-        master_data_twi = []
         for row in data:
             #### New Features - user metadata
             statuses_count                = 0
