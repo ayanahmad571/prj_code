@@ -45,6 +45,8 @@ paths = [
 print("Acessing Cresci User Data:")
 # Opening JSON files
 master_data_cresci = []
+ns = 0
+n_is = 0
 for path in paths:
     print(path)
     with open(p+path) as file:
@@ -94,10 +96,15 @@ for path in paths:
             if nan_val > 0:
                 nulls_in_path.append(nan_val)
 
+            # add vals to variable
+            ns += int(row["label"])
+            n_is +=1
         
         print("Null Score", np.sum(nulls_in_path)/total_row)
         print()
 
 
 print("Done")
+print(ns)
+print(n_is)
 # print(master_data_cresci)
