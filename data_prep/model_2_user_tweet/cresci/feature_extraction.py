@@ -1,7 +1,5 @@
 import pandas as pd
 from datetime import datetime
-from types import NoneType
-# from this import d
 from cresci.tweets_features_extractor import tweet_data_user
 
 p = "../../../datasets/cresci-2017.csv/datasets_full.csv/"
@@ -9,55 +7,17 @@ p = "../../../datasets/cresci-2017.csv/datasets_full.csv/"
 paths = [
     ("genuine_accounts.csv",0),
     ("social_spambots_3.csv",1),
-    # ("social_spambots_1.csv",1), # Too Many Null Values
-    # ("traditional_spambots_1.csv",1), # Too Many Null Values
+    ("social_spambots_1.csv",1), # Too Many Null Values
+    ("traditional_spambots_1.csv",1), # Too Many Null Values
     ("fake_followers.csv",1),
-    # ("social_spambots_2.csv",1) # Too Many Null Values
+    ("social_spambots_2.csv",1) # Too Many Null Values
 ]
 
-
-# #### New Features - user metadata
-# - statuses_count                count
-# - followers_count               count
-# - friends_count                 count
-# - favourite_count               count
-# - listed_count                  count
-# - default_profile_binary        binary
-# - profile_use_background_image  binary
-# - verified                      binary
-
-# #### New Features - derived features
-
-# - tweet_freq                    real-valued
-# - followers_growth_rate         real-valued
-# - friends_growth_rate           real-valued
-# - favourites_growth_rate        real-valued
-# - listed_growth_rate            real-valued
-# - followers_friends_ratio       real-valued
-# - screen_name_length            count 
-# - num_digits_in_screen_name     count
-# - name_length                   count
-# - num_digits_in_name            count
-# - description_length            count
-# - screen_name_likelihood        real-valued
-
-# #### Tweet Features
-# - Num Hashtags per post        real-valued
-# - Num URLs per post            real-valued
-# - Num Mentions per post        real-valued
-# - Num of Words per post        real-valued
-
-
-
-# text	
-# user_id	
-# num_hashtags	
-# num_urls	
-# num_mentions	
 
 
 print("Acessing Cresci User Data:")
 # Opening JSON files
+
 master_data_cresci = []
 for path in paths:
     print(path[0])
@@ -82,9 +42,6 @@ for path in paths:
         default_profile_binary        = 0
         profile_use_background_image  = 0
         verified                      = 0
-
-        #### New Features - derived features
-
         tweet_freq                    = 0
         followers_growth_rate         = 0
         friends_growth_rate           = 0
@@ -96,7 +53,6 @@ for path in paths:
         name_length                   = 0
         num_digits_in_name            = 0
         description_length            = 0
-        # screen_name_likelihood        = 0
 
         #### Tweet Features
         hashtags_per_post             = 0 
@@ -186,7 +142,6 @@ for path in paths:
         name_length                   = LEN_NAME
         num_digits_in_name            = NAME_DIGS
         description_length            = DESC_WORDS
-        # screen_name_likelihood        = 
         
         UID = int(getDataRow("id"))
         #IS A BOT?
@@ -226,9 +181,7 @@ for path in paths:
                 words_per_post                ,
                 IS_BOT
             ]
-            # print(to_append)
             master_data_cresci.append(to_append)    
 
     print("Done")
-# print(master_data_cresci)
 

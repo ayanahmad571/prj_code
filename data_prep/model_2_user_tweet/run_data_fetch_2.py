@@ -1,6 +1,6 @@
 import csv
 from twi_bot.feature_extraction import master_data_twi
-from cresci.feature_extraction import master_data_cresci
+# from cresci.feature_extraction import master_data_cresci
 
 header = [
 'statuses_count'                ,
@@ -31,10 +31,8 @@ header = [
 # data = master_data_twi + master_data_cresci
 data = master_data_twi
 
-# data = master_data_twi
 
-
-with open('labelled_data_tweets.csv', 'w', encoding='UTF8', newline='') as f:
+with open('2_no_cresci.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
 
     # write the header

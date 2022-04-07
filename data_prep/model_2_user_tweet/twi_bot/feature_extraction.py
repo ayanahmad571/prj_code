@@ -1,8 +1,6 @@
 import json
 from datetime import datetime
 from types import NoneType
-# from this import d
-# from labels_fetch import sql_insert
 
 p = "../../../datasets/"
 
@@ -12,40 +10,9 @@ paths = [
     "Twibot-20/test.json"
 ]
 
-# #### New Features - user metadata
-# - statuses_count                count
-# - followers_count               count
-# - friends_count                 count
-# - favourite_count               count
-# - listed_count                  count
-# - default_profile_binary        binary
-# - profile_use_background_image  binary
-# - verified                      binary
-
-# #### New Features - derived features
-
-# - tweet_freq                    real-valued
-# - followers_growth_rate         real-valued
-# - friends_growth_rate           real-valued
-# - favourites_growth_rate        real-valued
-# - listed_growth_rate            real-valued
-# - followers_friends_ratio       real-valued
-# - screen_name_length            count 
-# - num_digits_in_screen_name     count
-# - name_length                   count
-# - num_digits_in_name            count
-# - description_length            count
-# - screen_name_likelihood        real-valued
-
-# #### Tweet Features
-# - Num Hashtags per post        real-valued
-# - Num URLs per post            real-valued
-# - Num Mentions per post        real-valued
-# - Num of Words per post        real-valued
-
-
 print("Acessing TwiBot User Data:")
 # Opening JSON files
+
 master_data_twi = []
 for path in paths:
     print(path)
@@ -65,9 +32,6 @@ for path in paths:
             default_profile_binary        = 0
             profile_use_background_image  = 0
             verified                      = 0
-
-            #### New Features - derived features
-
             tweet_freq                    = 0
             followers_growth_rate         = 0
             friends_growth_rate           = 0
@@ -79,7 +43,6 @@ for path in paths:
             name_length                   = 0
             num_digits_in_name            = 0
             description_length            = 0
-            # screen_name_likelihood        = 0
             
             #### Tweet Features
             hashtags_per_post             = 0 
@@ -220,11 +183,8 @@ for path in paths:
                     words_per_post                ,
                     IS_BOT
                 ]
-                # print(to_append)
                 master_data_twi.append(to_append)
                     
-
-
 
             
         # Closing file

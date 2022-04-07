@@ -1,32 +1,17 @@
-import pandas as pd
 import csv
-# from this import d
-# from labels_fetch import sql_insert
 
 p = "../../../datasets/cresci-2017.csv/datasets_full.csv/"
 
 paths = [
     ("genuine_accounts.csv",0),
     ("social_spambots_3.csv",1),
-    # ("social_spambots_1.csv",1), # Too Many Null Values
-    # ("traditional_spambots_1.csv",1), # Too Many Null Values
+    ("social_spambots_1.csv",1), # Too Many Null Values
+    ("traditional_spambots_1.csv",1), # Too Many Null Values
     ("fake_followers.csv",1),
-    # ("social_spambots_2.csv",1) # Too Many Null Values
+    ("social_spambots_2.csv",1) # Too Many Null Values
 ]
 
-# #### Tweet Features
-# - Num Hashtags per post        real-valued
-# - Num URLs per post            real-valued
-# - Num Mentions per post        real-valued
-# - Num of Words per post        real-valued
 
-
-
-
-
-
-# def getDataRow(col):
-#     return df[col][row_ind]
 
 print("Acessing Cresci Tweet Data:")
 # Opening JSON files
@@ -57,7 +42,6 @@ for path in paths:
                     num_urls = int(row[19])
                     num_mentions = int(row[20])
 
-                # print(line, user_id, len(row))
 
 
                 
@@ -74,6 +58,5 @@ for path in paths:
                 else:
                     tweet_data_user[user_id] = [len(tweet_text.split()), num_hashtags, num_urls, num_mentions, 1]
             line +=1
-# print(tweet_data_user)
 print("Done")
 
