@@ -1,6 +1,5 @@
 import json
 from datetime import datetime
-# from this import d
 from labels_fetch import sql_insert
 
 p = "../../../datasets/"
@@ -15,7 +14,7 @@ paths = [
     "botwiki-2019/botwiki-2019_tweets.json", 
     "cresci-rtbust-2019(1)/cresci-rtbust-2019_tweets.json", 
     "gilani-2017/gilani-2017_tweets.json",
-    # "midterm-2018(1)/midterm-2018_processed_user_objects.json"
+    # "midterm-2018(1)/midterm-2018_processed_user_objects.json" # - Too Many Null Values
 ]
 
 
@@ -47,9 +46,6 @@ for path in paths:
             default_profile_binary        = 0
             profile_use_background_image  = 0
             verified                      = 0
-
-            #### New Features - derived features
-
             tweet_freq                    = 0
             followers_growth_rate         = 0
             friends_growth_rate           = 0
@@ -61,7 +57,6 @@ for path in paths:
             name_length                   = 0
             num_digits_in_name            = 0
             description_length            = 0
-            # screen_name_likelihood        = 0
 
             if diff_format_filename == path:
                 user_obj = row
@@ -147,7 +142,6 @@ for path in paths:
             name_length                   = LEN_NAME
             num_digits_in_name            = NAME_DIGS
             description_length            = DESC_WORDS
-            # screen_name_likelihood        = 
 
             #IS A BOT?
             if UID in sql_insert:
@@ -174,12 +168,8 @@ for path in paths:
                     description_length            ,
                     IS_BOT
                 ]
-                # print(to_append)
                 master_data.append(to_append)
                     
-
-
-
         
         # Closing file
         f.close()

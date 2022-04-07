@@ -29,7 +29,6 @@ for path in paths:
             if(line[1] == "bot"):
                 is_bot = 1
             mapVal = {int(line[0]): is_bot}
-            # print(mapVal)
             sql_insert.update(mapVal)
     print("Done")
 
