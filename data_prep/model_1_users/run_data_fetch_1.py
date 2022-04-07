@@ -28,11 +28,11 @@ header = [
 'IS_BOT']
 
 data = master_data + master_data_twi + master_data_cresci
-# data = master_data + master_data_twi 
-# data = master_data_twi
+data = master_data + master_data_twi 
+data = master_data_twi
 
 # the datasets to make
-with open('labelled_data.csv', 'w', encoding='UTF8', newline='') as f:
+with open('1_no_mid_cresci.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
 
     # write the header
