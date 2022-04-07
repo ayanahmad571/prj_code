@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
-from train_test_split import get_split,get_bot_percentage,models_to_run
+
+from helper_functions import get_split,get_bot_percentage,models_to_run
 from k_build_optimised_model import models_trained
 
 for variant in models_to_run:

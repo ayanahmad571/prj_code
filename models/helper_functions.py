@@ -1,7 +1,7 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-#Import scikit-learn metrics module for accuracy calculation
 import numpy as np
+
+from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 
 models_to_run = [

@@ -1,10 +1,12 @@
 import json
+import k_model_optimise
+
 from sklearn import metrics
 from sklearn.metrics import classification_report, confusion_matrix
-import numpy as np
-from train_test_split import get_train_test_split,models_to_run
+from helper_functions import get_train_test_split,models_to_run
 from sklearn.ensemble import RandomForestClassifier
-# import k_model_optimise
+
+
 path_to_optimised_params = "."
 
 
@@ -18,7 +20,7 @@ for variant in models_to_run:
 
     X_raw_data, y_raw_data, X_train, y_train, X_val, y_val, X_test, y_test, X_train_res, y_train_res = get_train_test_split(
         path_to_training_data, model_type)
-    # f = open(f"{path_to_optimised_params}/{variant[0]}t.json")
+
     f = open(f"{path_to_optimised_params}/{variant[0]}.json")
     optimised_vals = json.load(f)
     model = RandomForestClassifier(n_estimators=optimised_vals['n_estimators'], min_samples_split= optimised_vals['min_samples_split'], 
