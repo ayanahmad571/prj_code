@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn import metrics
 from sklearn.metrics import classification_report,confusion_matrix
 
-from helper_functions import get_train_test_split,models_to_run
+from utils.helper_functions import get_train_test_split,models_to_run
 from sklearn.ensemble import RandomForestClassifier
 
 for variant in models_to_run:

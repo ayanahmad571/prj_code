@@ -1,7 +1,7 @@
 import json
 import numpy as np
 
-from helper_functions import get_train_test_split,models_to_run
+from utils.helper_functions import get_train_test_split,models_to_run
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import RandomizedSearchCV# Number of trees in random forest
 

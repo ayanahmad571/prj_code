@@ -5,10 +5,10 @@ from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 
 models_to_run = [
-    (1,"Model-1 No-Mid-Cresci", 1, "./training_data/m1/1_no_mid_cresci.csv"),
-    (2,"Model-1 All", 1, "./training_data/m1/1_all.csv"),
-    (3,"Model-2 No-Mid-Cresci", 2, "./training_data/m2/2_no_cresci.csv"),
-    (4,"Model-2 All", 2, "./training_data/m2/2_all.csv")
+    (1,"Model-1 No-Mid-Cresci", 1, "./utils/training_data/m1/1_no_mid_cresci.csv"),
+    (2,"Model-1 All", 1, "./utils/training_data/m1/1_all.csv"),
+    (3,"Model-2 No-Mid-Cresci", 2, "./utils/training_data/m2/2_no_cresci.csv"),
+    (4,"Model-2 All", 2, "./utils/training_data/m2/2_all.csv")
 ]
 
 # Essential Function
