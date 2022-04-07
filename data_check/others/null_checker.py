@@ -1,20 +1,10 @@
 import json
-import pandas as pd
-
 import numpy as np
 
-# from this import d
-# from labels_fetch import sql_insert
-
+# Root Directory
 p = "../../../datasets/"
 
-# (Path, Bot?)
-paths = [
-    "Twibot-20/train.json",
-    "Twibot-20/dev.json",
-    "Twibot-20/test.json"
-]
-
+# Dataset Paths
 paths = [
     "botometer-feedback-2019/botometer-feedback-2019_tweets.json",
     "pronbots-2019/pronbots-2019_tweets.json", 
@@ -30,17 +20,19 @@ paths = [
 
 
 print("Null Checking Other Datasets:")
+
+# File With Different Format
 diff_format_filename = "midterm-2018(1)/midterm-2018_processed_user_objects.json"
-# Opening JSON files
+
 for path in paths:
     print(path)
     with open(p+path) as file:
         f = open(p+path)
 
-        # returns JSON object as
-        # a dictionary
+        # returns JSON object as a dictionary
         data = json.load(f)
 
+        # Holds the null values in a dataset
         nulls_in_path = []
         total_row = len(data)
         for row in data:
@@ -49,9 +41,11 @@ for path in paths:
             else:
                 user_obj = row['user']
             
+            # Function to get Value of Object
             def getDataRow(col):
                 return user_obj[col]
 
+            # Check if a value is Null
             def isNull(col):
                 val_to_check = user_obj[col]
                 nulls = ["nan", np.nan, "NULL", ' ', " "]
@@ -60,6 +54,7 @@ for path in paths:
                 else:
                     return int(0)
 
+            # names of columns
             col_names = ['statuses_count',
                         'followers_count',
                         'friends_count',
