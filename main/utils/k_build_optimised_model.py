@@ -1,5 +1,5 @@
 import json
-# import utils.k_model_optimise
+import utils.k_model_optimise
 
 from sklearn import metrics
 from sklearn.metrics import classification_report, confusion_matrix
